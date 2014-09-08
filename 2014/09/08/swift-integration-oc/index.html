@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Swift与OC交互总结 | Amy&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="初始化
+为了使用 Swift 实例化 Objective-C 的 Class，你应该使用 Swift 语法调用它的一个初始化器。当 Objective-C 的init方法变化到 Swift，他们用 Swift 初始化语法呈现。“init”前缀被截断当作一个关键字，用来表明该方法是初始化方法。那些以“initWith”开头的init方法，“With”也会被去除。从“init”或者“initWith”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift与OC交互总结">
+<meta property="og:url" content="http://yoursite.com/2014/09/08/swift-integration-oc/">
+<meta property="og:site_name" content="Amy's Blog">
+<meta property="og:description" content="初始化
+为了使用 Swift 实例化 Objective-C 的 Class，你应该使用 Swift 语法调用它的一个初始化器。当 Objective-C 的init方法变化到 Swift，他们用 Swift 初始化语法呈现。“init”前缀被截断当作一个关键字，用来表明该方法是初始化方法。那些以“initWith”开头的init方法，“With”也会被去除。从“init”或者“initWith”">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift与OC交互总结">
+<meta name="twitter:description" content="初始化
+为了使用 Swift 实例化 Objective-C 的 Class，你应该使用 Swift 语法调用它的一个初始化器。当 Objective-C 的init方法变化到 Swift，他们用 Swift 初始化语法呈现。“init”前缀被截断当作一个关键字，用来表明该方法是初始化方法。那些以“initWith”开头的init方法，“With”也会被去除。从“init”或者“initWith”">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Amy&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<div class="profilepic">
+			<img src="http://stormzhang.qiniudn.com/amy_avatar.jpg">
+		</div>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Amy</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">面朝大海，春暖花开</p>
+		
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/zhangaidi" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/zhangqi8" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="http://feed.feedsky.com/zhangaidi" title="rss">rss</a>
+		        
+			</div>
+		</nav>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://stormzhang.qiniudn.com/amy_avatar.jpg">
+			</div>
+
+			<hgroup>
+			  <h1 class="header-author"><a href="/">Amy</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">面朝大海，春暖花开</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangaidi" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/zhangqi8" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="http://feed.feedsky.com/zhangaidi" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <article id="post-swift-integration-oc" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/09/08/swift-integration-oc/" class="article-date">
+  	<time datetime="2014-09-08T12:47:49.000Z" itemprop="datePublished">Sep 8 2014</time>
+</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift与OC交互总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="初始化">初始化</h2>
+<p>为了使用 Swift 实例化 Objective-C 的 Class，你应该使用 Swift 语法调用它的一个初始化器。当 Objective-C 的init方法变化到 Swift，他们用 Swift 初始化语法呈现。“init”前缀被截断当作一个关键字，用来表明该方法是初始化方法。那些以“initWith”开头的init方法，“With”也会被去除。从“init”或者“initWith”中分离出来的这部分方法名首字母变成小写，并且被当做是第一个参数的参数名。其余的每一部分方法名依次变味参数名。这些方法名都在圆括号中被调用。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let <span class="symbol">myTableView:</span> <span class="constant">UITableView</span> = <span class="constant">UITableView</span>(<span class="symbol">frame:</span> <span class="constant">CGRectZero</span>, <span class="symbol">style:</span> .<span class="constant">Grouped</span>)</div></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>你不需要调用 alloc，Swift 能替你处理。注意，当使用 Swift 风格的初始化函数的时候，“init”不会出现。</p>
+<p>你可以在初始化时显式的声明对象的类型，也可以忽略它，Swift 能够正确判断对象的类型。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let myTextField = <span class="constant">UITextField</span>(<span class="symbol">frame:</span> <span class="constant">CGRect</span>(<span class="number">0</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>, <span class="number">200.0</span>, <span class="number">40.0</span>))</div></pre></td></tr></table></figure>
+
+<h2 id="访问属性">访问属性</h2>
+<p>在 Swift 中访问和设置 Objective-C 对象的属性时，使用点语法：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">myTextField.textColor = <span class="constant">UIColor</span>.darkGrayColor()</div><div class="line">myTextField.text = <span class="string">"Hello world"</span></div><div class="line"><span class="keyword">if</span> myTextField.editing {</div><div class="line">    myTextField.editing = <span class="keyword">false</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>当 get 或 set 属性时，直接使用属性名称，不需要附加圆括号。注意，darkGrayColor后面附加了一对圆括号，这是因为darkGrayColor是UIColor的一个类方法，不是一个属性。</p>
+<h2 id="方法">方法</h2>
+<p>在 Swift 中调用 Objective-C 方法时，使用点语法。</p>
+<p>当 Objective-C 方法转换到 Swift 时，Objective-C 的selector的第一部分将会成为方法名并出现在圆括号的前面，而第一个参数将直接在括号中出现，并且没有参数名，而剩下的参数名与参数则一一对应的填入圆括号中。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myTableView.insertSubview(mySubview, <span class="symbol">atIndex:</span> <span class="number">2</span>)</div></pre></td></tr></table></figure>
+
+<p>如果你调用一个无参方法，仍必须在方法名后面加上一对圆括号</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myTableView.layoutIfNeeded()</div></pre></td></tr></table></figure>
+
+<h2 id="id_兼容性（id_Compatibility）">id 兼容性（id Compatibility）</h2>
+<p>Swift 包含一个叫做AnyObject的协议类型，表示任意类型的对象，就像 Objective-C 中的id一样。AnyObject协议允许你编写类型安全的 Swift 代码同时维持无类型对象的灵活性。因为AnyObject协议保证了这种安全，Swift 将 id 对象导入为 AnyObject。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var <span class="symbol">myObject:</span> <span class="constant">AnyObject</span> = <span class="constant">UITableViewCell</span>()</div><div class="line">myObject = <span class="constant">NSDate</span>()</div></pre></td></tr></table></figure>
+
+<p>然而，由于直到运行时才知道AnyObject的对象类型，所以有可能在不经意间写出不安全代码。另外，与 Objective-C 不同的是，如果你调用方法或者访问的属性 AnyObject 对象没有声明，将会报运行时错误。比如下面的代码在运行时将会报出一个 unrecognized selector error 错误</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">myObject.characterAtIndex(<span class="number">5</span>)</div><div class="line">/<span class="regexp">/ crash, myObject does't respond to that method</span></div></pre></td></tr></table></figure>
+
+<p>但是，你可以通过 Swift 的 optinals 特性来排除这个 Objective-C 中常见的错误，当你用AnyObject对象调用一个 Objective-C 方法时，这次调用将会变成一次隐式展开 optional（implicitly unwrapped optional）的行为。你可以通过 optional 特性来决定 AnyObject 类型的对象是否调用该方法，同样的，你可以把这种特性应用在属性上。</p>
+<p>举个例子，在下面的代码中，第一和第二行代码将不会被执行因为length属性和characterAtIndex:方法不存在于 NSDate 对象中。myLength常量会被推测成可选的Int类型并且被赋值为nil。同样你可以使用if-let声明来有条件的展开这个方法的返回值，从而判断对象是否能执行这个方法。就像第三行做的一样。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let myLength = myObject.length?</div><div class="line">let myChar = myObject.characterAtIndex?(<span class="number">5</span>)</div><div class="line"><span class="keyword">if</span> let fifthCharacter = myObject.characterAtIndex(<span class="number">5</span>) {</div><div class="line">    println(<span class="string">"Found \(fifthCharacter) at index 5"</span>)</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>对于 Swift 中的强制类型转换，从 AnyObject 类型的对象转换成明确的类型并不会保证成功，所以它会返回一个可选的值。而你需通过检查该值的类型来确认转换是否成功。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let userDefaults = <span class="constant">NSUserDefaults</span>.standardUserDefaults()</div><div class="line">let <span class="symbol">lastRefreshDate:</span> <span class="constant">AnyObject</span>? = userDefaults.objectForKey(<span class="string">"LastRefreshDate"</span>)</div><div class="line"><span class="keyword">if</span> let date = lastRefreshDate as? <span class="constant">NSDate</span> {</div><div class="line">    println(<span class="string">"\(date.timeIntervalSinceReferenceDate)"</span>)</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h2 id="扩展（Extensions）">扩展（Extensions）</h2>
+<p>你也可以使用扩展来增加属性（包括类的属性与静态属性）。然而，这些属性必须是通过计算才能获取的，扩展不会为类，结构体，枚举存储属性。下面这个例子为CGRect类增加了一个叫area的属性。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">extension <span class="constant">CGRect</span> {</div><div class="line">    var <span class="symbol">area:</span> <span class="constant">CGFloat</span> {</div><div class="line">        <span class="keyword">return</span> width * height</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line">let rect = <span class="constant">CGRect</span>(<span class="symbol">x:</span> <span class="number">0</span>.<span class="number">0</span>, <span class="symbol">y:</span> <span class="number">0</span>.<span class="number">0</span>, <span class="symbol">width:</span> <span class="number">10.0</span>, <span class="symbol">height:</span> <span class="number">50.0</span>)</div><div class="line">let area = rect.area</div></pre></td></tr></table></figure>
+
+<p>你不能使用扩展来覆盖 Objective-C 类型中存在的方法与属性。</p>
+<h2 id="闭包（Closures）">闭包（Closures）</h2>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//Objective-C</div><div class="line">void (^completionBlock)(NSData *, NSError *) = ^(NSData *data, NSError *error) {/* ... */}</div><div class="line"></div><div class="line">//Swift</div><div class="line">let completionBlock: (NSData, NSError) -&gt; Void = {data, error in /* ... */}</div></pre></td></tr></table></figure>
+
+<p>Swift 的闭包与 Objective-C 中的 blocks 能够和睦相处，所以你可以把一个 Swift 闭包传递给一个把 block 作为参数的 Objective-C 函数。Swift 闭包与函数具有互通的类型，所以你甚至可以传递 Swift 函数的名字。</p>
+<p>闭包与 blocks 语义上想通但是在一个地方不同：变量是可以直接改变的，而不是像 block 那样会拷贝变量。换句话说，Swift 中变量的默认行为与 Objective-C 中 __block 变量一致。</p>
+<h2 id="比较对象">比较对象</h2>
+<p>当比较两个 Swift 中的对象时，可以使用两种方式。第一种，使用（==），判断两个对象内容是否相同。第二种，使用(===)，判断常量或者变量是否为同一个对象的实例。</p>
+<h2 id="Swift_类型兼容性">Swift 类型兼容性</h2>
+<p>当你定义了一个继承自NSObject或者其他 Objective-C 类的 Swift 类，这些类都能与 Objective-C 无缝连接。所有的步骤都有 Swift 编译器自动完成，如果你从未在 Objective-C 代码中导入 Swift 类，你也不需要担心类型适配问题。另外一种情况，如果你的 Swift 类并不来源自 Objectve-C 类而且你希望能在 Objecive-C 的代码中使用它，你可以使用下面描述的 @objc 属性。</p>
+<h2 id="Objective-C_选择器（Selectors）">Objective-C 选择器（Selectors）</h2>
+<p>一个 Objective-C 选择器类型指向一个 Objective-C 的方法名。在 Swift 时代，Objective-C 的选择器被Selector结构体替代。你可以通过字符串创建一个选择器，比如let mySelector: Selector = “tappedButton:”。因为字符串能够自动转换为选择器，所以你可以把字符串直接传递给接受选择器的方法。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyViewController</span>: <span class="title">UIViewController</span> {</span></div><div class="line">    let myButton = <span class="constant">UIButton</span>(<span class="symbol">frame:</span> <span class="constant">CGRect</span>(<span class="symbol">x:</span> <span class="number">0</span>, <span class="symbol">y:</span> <span class="number">0</span>, <span class="symbol">width:</span> <span class="number">100</span>, <span class="symbol">height:</span> <span class="number">50</span>))</div><div class="line">    init(nibName <span class="symbol">nibNameOrNil:</span> <span class="constant">String</span>!, bundle <span class="symbol">nibBundleOrNil:</span> <span class="constant">NSBundle</span>!) {</div><div class="line">        <span class="keyword">super</span>.init(<span class="symbol">nibName:</span> nibName, <span class="symbol">bundle:</span> nibBundle)</div><div class="line">        myButton.targetForAction(<span class="string">"tappedButton:"</span>, <span class="symbol">withSender:</span> <span class="keyword">self</span>)</div><div class="line">    }</div><div class="line"></div><div class="line">    func tappedButton(<span class="symbol">sender:</span> <span class="constant">UIButton</span>!) {</div><div class="line">        println(<span class="string">"tapped button"</span>)</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h2 id="继承Objective-C的类">继承Objective-C的类</h2>
+<p>在 Swift 中，开发者可以定义一个子类，该子类继承自使用 Objective-C 编写的类。创建该子类的方法是，在 Swift 的类名后面加上一个冒号（:），冒号后面跟上 Objective-C 的类名。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import UIKit;</div><div class="line"></div><div class="line">class MySwiftViewController: UIViewController {</div><div class="line">   // 定义类</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h2 id="采用协议">采用协议</h2>
+<p>在 Swift 中，开发者可以采用 Objective-C 中定义好的协议。和 Swift 协议一样，所有 Objective-C 协议都写在一个用逗号隔开的列表中，跟在所在类的父类名后面（如果它有父类的话）。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class MySwiftViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {</div><div class="line">   // 定义类</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h1 id="集成Interface_Builder">集成Interface Builder</h1>
+<h2 id="使用Outlets和Action">使用Outlets和Action</h2>
+<p>使用 Outlets 和 Action 可以连接源代码和 Interface Builder 的 UI 对象。在Swift里面使用 Outlets 和 Action，需要在属性和方法声明前插入@IBOutlet或者@IBAction关键字。声明一个 Outlet集合同样是用@IBOutlet属性，即为类型指定一个数组。</p>
+<p>当开发者在 Swift 里面声明了一个 Outlet 时，Swift 编译器会自动将该类型转换为弱（weak）、隐式（implicitly）、未包装（unwrapped）的 optional（Object-c里面对应指针类型）数据类型，并为它分配一个初始化的空值nil。实际上，编译器使用@IBOutlet weak var name: Type! = nil来代替 @IBOutlet var name: Type。编译器将该类型转换成了弱（weak）、隐式（implicitly）、未包装（unwrapped）的 optional 类型，因此开发者就不需要在构造器中为该类型分配一个初始值了。当开发者从故事板（storyboard）或者xib文件里面初始化对象 class 后，定义好的 Outlet 和这些对象连接在一起了，所以，这些 Outlet 是隐式的，未包装的。由于创建的 outlets 一般都是弱关系，因此默认 outlets 是弱类型。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyViewController</span>: <span class="title">UIViewController</span> {</span></div><div class="line">    <span class="variable">@IBOutlet</span> weak var <span class="symbol">button:</span> <span class="constant">UIButton</span>!对于外联的属性需要定义为隐式optial类型</div><div class="line">    <span class="variable">@IBOutlet</span> var <span class="symbol">textFields:</span> [<span class="constant">UITextField</span>]!</div><div class="line">    <span class="variable">@IBAction</span> func buttonTapped(<span class="constant">AnyObject</span>) {</div><div class="line">       println(<span class="string">"button tapped!"</span>)</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h2 id="指明属性特性">指明属性特性</h2>
+<p>在 Objective-C 中，属性通常都有一组特性（Attributes）说明来指明该属性的一些附加信息。在 Swift 中，开发者可以通过不同的方法来指明属性的这些特性。</p>
+<h2 id="强类型和弱类型">强类型和弱类型</h2>
+<p>Swift 里属性默认都是强类型的。使用weak关键字修饰一个属性，能指明其对象存储时是一个弱引用。该关键字仅能修饰 optional 对象类型。</p>
+<h2 id="读/写和只读">读/写和只读</h2>
+<p>在 Swift 中，没有readwrite和readonly特性。当声明一个存储型属性时，使用let修饰其为只读；使用var修饰其为可读／写。当声明一个计算型属性时，为其提供一个 getter 方法，使其成为只读的；提供 getter 方法和 setter 方法，使其成为可读／写的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2014/09/04/first-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">First Blog</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="swift-integration-oc" data-title="Swift与OC交互总结" data-url="http://yoursite.com/2014/09/08/swift-integration-oc/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"your duoshuo pro name"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-center">
+    		&copy; 2014 Amy | Powered By <a href="http://stormzhang.github.io/" target="_blank">Storm Zhang</a>
+    	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

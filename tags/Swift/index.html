@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2014 | Amy&#39;s Blog</title>
+  <title>Tag: Swift | Amy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="iOS Developer">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Amy's Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2014/">
+<meta property="og:url" content="http://yoursite.com/tags/Swift/">
 <meta property="og:site_name" content="Amy's Blog">
 <meta property="og:description" content="iOS Developer">
 <meta name="twitter:card" content="summary">
@@ -106,91 +106,58 @@
 </nav>
       
   
+    <article id="post-swift-integration-oc" class="article article-type-post" itemscope itemprop="blogPost">
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/09/08/swift-integration-oc/" class="archive-article-date">
-  	<time datetime="2014-09-08T12:47:49.000Z" itemprop="datePublished">Sep 8</time>
+    <div class="article-meta">
+      <a href="/2014/09/08/swift-integration-oc/" class="article-date">
+  	<time datetime="2014-09-08T12:47:49.000Z" itemprop="datePublished">Sep 8 2014</time>
 </a>
-	      	<br>
-	      	
-	    	
+      
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li></ul>
 
-    	</div>
-    	
+    </div>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/09/08/swift-integration-oc/">Swift与OC交互总结</a>
+      <a class="article-title" href="/2014/09/08/swift-integration-oc/">Swift与OC交互总结</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-photo">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/09/04/first-blog/" class="archive-article-date">
-  	<time datetime="2014-09-04T04:53:17.000Z" itemprop="datePublished">Sep 4</time>
-</a>
-	      	<br>
-	      	
-	    	
-    	</div>
-    	
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/09/04/first-blog/">First Blog</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="初始化">初始化</h2>
+<p>为了使用 Swift 实例化 Objective-C 的 Class，你应该使用 Swift 语法调用它的一个初始化器。当 Objective-C 的init方法变化到 Swift，他们用 Swift 初始化语法呈现。“init”前缀被截断当作一个关键字，用来表明该方法是初始化方法。那些以“initWith”开头的init方法，“With”也会被去除。从“init”或者“initWith”中分离出来的这部分方法名首字母变成小写，并且被当做是第一个参数的参数名。其余的每一部分方法名依次变味参数名。这些方法名都在圆括号中被调用。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let <span class="symbol">myTableView:</span> <span class="constant">UITableView</span> = <span class="constant">UITableView</span>(<span class="symbol">frame:</span> <span class="constant">CGRectZero</span>, <span class="symbol">style:</span> .<span class="constant">Grouped</span>)</div></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/09/01/hello-world/" class="archive-article-date">
-  	<time datetime="2014-09-01T12:47:49.000Z" itemprop="datePublished">Sep 1</time>
-</a>
-	      	<br>
-	      	
-	    	
-    	</div>
-    	
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/09/01/hello-world/">Hello World</a>
-    </h1>
-  
 
-    </header>
+        
+          <p class="article-more-link">
+            <a href="/2014/09/08/swift-integration-oc/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
   </div>
+  
 </article>
+
+
+
+
+
+
   
-  
-    </div></section>
   
 
       <footer id="footer">
